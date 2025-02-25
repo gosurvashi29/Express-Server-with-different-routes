@@ -4,6 +4,13 @@ const express = require('express');
 // Initialize the Express app
 const app = express();
 
+// Middleware to log HTTP method and endpoint accessed
+app.use((req, res, next) => {
+    console.log(`${req.method} request made to ${req.url}`);
+    next(); // Pass control to the next middleware or route handler
+  });
+  
+
 // Use middleware to parse JSON data for POST requests
 app.use(express.json());
 
